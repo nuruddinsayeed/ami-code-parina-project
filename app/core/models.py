@@ -9,14 +9,14 @@ class UserManger(BaseUserManager):
     User model"""
     """Also It provides the helper fucnitons for creating a user/superuser"""
 
-    def create_user(self, email_address, password=None, **extra_fields):
+    def create_user(self, email, password=None, **extra_fields):
         """Create a new user to our user model"""
 
-        if not email_address:
+        if not email:
             raise ValueError("User Can't be created without email address")
 
         user = self.model(email=self.normalize_email(
-            email_address), **extra_fields)
+            email), **extra_fields)
         # using set_pass method for password encription
         user.set_password(password)
         user.save(using=self._db)
