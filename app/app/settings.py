@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'core',
     'user',
+    'khoj_the_search',
 ]
 
 MIDDLEWARE = [
