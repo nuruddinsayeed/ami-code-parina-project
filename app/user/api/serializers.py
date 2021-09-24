@@ -21,6 +21,19 @@ class UserSerializer(serializers.ModelSerializer):
 
         return get_user_model().objects.create_user(**validated_data)
 
+    def update(self, instance, validated_data):
+        """Overriding update method to use password encription method"""
+
+        password = validated_data.pop("password", None)
+        user = super().update(instance, validated_data)
+
+        # If user wants to updates a password
+        if password:
+            user.set_password(password)
+            user.save()
+
+        return user
+
 
 class AuthTokenUserSerializer(serializers.Serializer):
     """Serialize user authentication object"""
