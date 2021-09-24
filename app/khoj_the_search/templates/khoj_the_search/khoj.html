@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock title %}
+
+{% block content %}
+    <!-- Khoj The Search Form Start -->
+    <div class="container mt-50 mb-50">
+        <div class="card">
+            <form method="POST" class="row g-3">
+                {% csrf_token %}
+                <h1 class="mx-auto w-auto p-2">খোজ দি সার্চ</h1>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="floatingInput" required name="numbers">
+                    <label for="floatingInput">Enter Numbers Separated by Comma</label>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="intSearch" required name="search">
+                    <label for="intSearch">Search</label>
+                </div>
+                <div class="col-12">
+                    <button class="btn" type="submit">Submit form</button>
+                </div>
+            </form>
+            
+            {% if post %}
+                <h3 class="mx-auto"><strong>Result:</strong> {{result}}</h3>
+            {% endif %}
+                
+        </div>
+    </div>
+    <!-- Khoj The Search Form End -->
+{% endblock content %}
