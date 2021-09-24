@@ -4,28 +4,28 @@
     <nav class="navbar navbar-light"">
         <!-- Navbar content -->
         <div class="container">
-            <a class="logo" href="#">KHOJ THE SEARCH</a>
+            <a class="logo" href="{% url 'home' %}">KHOJ THE SEARCH</a>
             <ul>
                 {% if user.is_authenticated %}
                     <li>
                         <a
                             href="javascript:{document.getElementById('logout').submit()}"
                             class="nav-link">
-                            Log Out
+                            Logout / {{user.name}}
                         </a>
-                        <form action="#" id="logout" method="POST">
+                        <form action="{% url 'logout' %}" id="logout" method="POST">
                             {% csrf_token %}
                             <input type="hidden">
                         </form>
                     </li>
                 {% else %}
                     <li>
-                        <a href="#" cclass="nav-link">
+                        <a href="{% url 'login' %}" cclass="nav-link">
                             Login
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{% url 'register' %}">
                             Register
                         </a>
                     </li>
