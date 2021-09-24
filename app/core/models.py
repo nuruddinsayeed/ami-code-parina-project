@@ -59,8 +59,8 @@ class UserInputValue(models.Model):
         on_delete=models.CASCADE
     )
 
-    number_list = models.TextField()
-    search_date = models.DateTimeField(auto_now=True)
+    input_values = models.TextField()
+    timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return str(self.search_date)
+        return str(self.timestamp)

@@ -10,7 +10,7 @@ def save_numb_list(user, number_list):
     # converting list to string to store it in our database as string (text)
     sorted_nums_string = ", ".join([arg for arg in number_list])
     num_sting = UserInputValue.objects.create(
-        user=user, number_list=sorted_nums_string)
+        user=user, input_values=sorted_nums_string)
     num_sting.save()
 
 
@@ -18,7 +18,6 @@ def save_numb_list(user, number_list):
 def khoj(request):
 
     if request.method == "POST":
-        # if user post number list and search value
         number_list = request.POST.get("numbers").replace(" ", "")
         search_number = request.POST.get("search").replace(" ", "")
         number_list = number_list.split(",")

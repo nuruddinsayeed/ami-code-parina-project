@@ -10,4 +10,5 @@ urlpatterns = [
 
     # API Endpoints
     path("api/user/", include("user.api.urls")),
+    path("api/input-values", include("khoj_the_search.api.urls")),
 ]
