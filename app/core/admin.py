@@ -21,6 +21,7 @@ class UserAdmin(BaseUserAdmin):
         }),
         (_("Personal Info"), {
             "fields": (
+                "name",
                 "is_active",
                 "is_staff",
                 "is_superuser"
