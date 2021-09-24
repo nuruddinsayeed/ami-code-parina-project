@@ -4,4 +4,5 @@ from user.api import views
 
 urlpatterns = [
     path("create/", views.CreateUserAPIView.as_view(), name="create-user"),
+    path("token/", views.CreateTokenView.as_view(), name="create-token"),
 ]

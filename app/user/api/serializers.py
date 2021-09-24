@@ -44,7 +44,7 @@ class AuthTokenUserSerializer(serializers.Serializer):
         # by default django viewset passes the context into serializer class
         # when a request is made
         user = authenticate(
-            request=self.cotext.get("request"),
+            request=self.context.get("request"),
             username=email,
             password=password
         )
