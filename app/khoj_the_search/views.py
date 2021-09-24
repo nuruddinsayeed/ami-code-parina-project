@@ -1,6 +1,18 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
+from core.models import UserInputValue
+
+
+def save_numb_list(user, number_list):
+    """Save search list to the database"""
+
+    # converting list to string to store it in our database as string (text)
+    sorted_nums_string = ", ".join([arg for arg in number_list])
+    num_sting = UserInputValue.objects.create(
+        user=user, number_list=sorted_nums_string)
+    num_sting.save()
+
 
 @login_required(login_url='login')
 def khoj(request):
@@ -24,6 +36,10 @@ def khoj(request):
             )
 
         number_list.sort()
+
+        # save the validated data
+        save_numb_list(request.user, number_list)
+
         result = False
         if search_number in number_list:
             result = True

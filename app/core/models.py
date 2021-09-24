@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
     PermissionsMixin
+from django.conf import settings
 
 
 class UserManger(BaseUserManager):
@@ -47,3 +48,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManger()
 
     USERNAME_FIELD = 'email'  # replace username field with email field
+
+
+class UserInputValue(models.Model):
+    """User numbers input data model"""
+
+    # Getting user model that is defined in project settings
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+
+    number_list = models.TextField()
+    search_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return str(self.search_date)
