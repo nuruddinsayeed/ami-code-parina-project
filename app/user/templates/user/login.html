@@ -10,6 +10,7 @@
                 {% csrf_token %}
                 <h1 class="mx-auto w-auto p-2">Login to your account</h1>
                 <div class="form-floating mb-3">
+
                     {{form.email}}
                     {{ form.email.label_tag }}
                     <!--Show Error Inputs-->
@@ -17,11 +18,18 @@
                         
                 </div>
                 <div class="form-floating">
+
                     {{form.password}}
                     {{ form.password.label_tag }}
                     <!--Show Error Inputs-->
                     {{form.password.errors}}
+
                 </div>
+   
+                {% if message %}
+                    <p class="mx-auto w-auto errorlist" >{{message}}</p>
+                {% endif %}
+
                 <div class="col-12">
                     <button class="btn" type="submit">Log In</button>
                 </div>

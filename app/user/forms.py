@@ -28,7 +28,7 @@ class UserRegForm(forms.ModelForm):
         }
 
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Email Address', 'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Name', 'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email Address', 'class': 'form-control'}),
         }
 
@@ -37,6 +37,16 @@ class UserRegForm(forms.ModelForm):
                 "required": "email Can not be Empty",
             },
         }
+
+    def save(self, commit=True):
+        """Overriding save method as we need to user our custom user
+        password encription method"""
+        user = super().save(commit=False)
+        password = user.password
+        user.set_password(password)  # use custom user pass encription
+        if commit:
+            user.save()
+        return user
 
     # Overriding clean funciton to add client site pass check validation
     def clean(self):

@@ -19,7 +19,8 @@ class InputValuesAPIView(APIView):
         try:
             start_datetime = request.GET["start_datetime"]
             end_datetime = request.GET["end_datetime"]
-            user_id = request.GET["user_id"]
+            # converting to int to validate user_id as int
+            user_id = int(request.GET["user_id"])
         except Exception as e:
             return Response({"Error": "Please Provie user id, start date and end date"},
                             status=status.HTTP_404_NOT_FOUND)

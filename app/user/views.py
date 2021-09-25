@@ -26,9 +26,17 @@ def login(request):
                 auth.login(request, user)
                 return redirect('home')
             # return redirect('login')
-            render(request, "user/login.html", {"form": form})
+            data = {
+                "message": "Please check your Email address and password",
+                "form": form
+            }
+            return render(request, "user/login.html", data)
 
-        return render(request, "user/login.html", {"form": form})
+        data = {
+            "message": "Invalid Input",
+            "form": form,
+        }
+        return render(request, "user/login.html", data)
 
     form = LoginForm()
 
