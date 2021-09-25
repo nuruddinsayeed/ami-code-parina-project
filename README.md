@@ -40,7 +40,7 @@ _If Poject setup is successfull, then you can follow the steps bellw_
 ### Video Link:
 
 <p align="center">
-  <a href="#"><img src="" width="290"></a>
+  <a href="https://youtu.be/TbacbAHp7H8"><img src="https://github.com/nuruddinsayeed/ami-code-parina-project/blob/main/zzzz.png" width="290"></a>
 </p>
 
 ## Section One (Authentication/Registration Page):
